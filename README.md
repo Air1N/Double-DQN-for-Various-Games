@@ -44,8 +44,6 @@ Later, I added surprisal, and the environment could be solved in just over 13,00
 
 This is an example of some landings at around 30,000 steps. The model is not consistent at this point, possibly attributed to the 1/20 random actions, but it does solve the environment quite frequently. And surprisal allowed it to try out turning off the engines very early on in the training process.
 
-You can see the lander gets stuck hovering occasionally, ~~I believe this is due to the surprisal being over-weighted, however, eventually this behavior would disappear as the next-state predictor improves.~~ Edit: This was actually due to a bug where the REWARD_AFFECT_PAST_N would affect the oldest element as much as the newest element, but the values in-between were correct. i.e. The model recieved same reward in experience replay while hovering as it did when it landed, BUT ONLY if it landed in the actual simulation. Surprisingly, it still landed frequently by 30k steps.
-
 ## Setup
 1. Download the code.
 2. Make sure you have python3.
